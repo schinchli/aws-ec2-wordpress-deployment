@@ -1,37 +1,56 @@
-# AWS EC2 WordPress Deployment - Complete Learning Guide
+# Amazon EC2 WordPress Deployment - Complete Beginner Guide
 
-## 🎯 Learning Objectives
+## 🎯 Learning Objectives (What You'll Master)
 
 By the end of this guide, you will understand:
-- What AWS EC2 is and how virtual servers work
-- Security groups and network security concepts
-- SSH key pairs and secure server access
-- Linux server administration basics
-- WordPress installation and configuration
-- Web server management (Apache, PHP, MySQL)
+- What Amazon EC2 is and how cloud servers work (no prior experience needed!)
+- How to launch and manage virtual servers in the AWS cloud
+- WordPress installation and website management
+- Cloud security basics and best practices
+- Cost management and optimization strategies
+- Real-world web hosting skills employers value
 
 ## 📚 Table of Contents
 
-1. [AWS EC2 Fundamentals](#aws-ec2-fundamentals)
-2. [Security Groups & Network Security](#security-groups--network-security)
-3. [SSH Key Pairs & Authentication](#ssh-key-pairs--authentication)
-4. [Linux Server Administration](#linux-server-administration)
-5. [LAMP Stack Components](#lamp-stack-components)
-6. [WordPress Installation](#wordpress-installation)
-7. [Hands-on Tutorial](#hands-on-tutorial)
-8. [Troubleshooting](#troubleshooting)
+1. [Amazon EC2 Fundamentals (Start Here!)](#amazon-ec2-fundamentals)
+2. [Cloud Security Made Simple](#cloud-security-made-simple)
+3. [SSH Keys Explained (Secure Access)](#ssh-keys-explained)
+4. [Linux Basics for Beginners](#linux-basics-for-beginners)
+5. [Web Server Stack (LAMP) Explained](#web-server-stack-explained)
+6. [WordPress Installation Guide](#wordpress-installation-guide)
+7. [Hands-on Tutorial (Step-by-Step)](#hands-on-tutorial)
+8. [Troubleshooting Common Issues](#troubleshooting-common-issues)
 
 ---
 
-## 🖥️ AWS EC2 Fundamentals
+## 🖥️ Amazon EC2 Fundamentals
 
-### What is Amazon EC2?
-Amazon Elastic Compute Cloud (EC2) provides:
-- **Virtual Servers**: Scalable computing capacity in the cloud
-- **Multiple Instance Types**: Different CPU, memory, and storage configurations
-- **Pay-as-you-go**: Only pay for what you use
-- **Global Infrastructure**: Deploy in multiple regions worldwide
-- **High Availability**: Built-in redundancy and fault tolerance
+### What is Amazon EC2? (Simple Explanation)
+Think of Amazon EC2 as **renting a computer in the cloud**:
+- Instead of buying a physical server, you rent virtual servers from Amazon
+- You can start, stop, and configure these servers anytime
+- Pay only for what you use (like electricity)
+- Access your server from anywhere in the world
+- Scale up or down based on your needs
+
+### Why Use Amazon EC2 for WordPress?
+```yaml
+Traditional Web Hosting vs Amazon EC2:
+
+Traditional Hosting:
+├─ Fixed monthly cost ($10-50/month)
+├─ Limited customization
+├─ Shared resources with other websites
+├─ Basic support and features
+└─ Difficult to scale
+
+Amazon EC2:
+├─ Pay-as-you-go ($0-10/month for small sites)
+├─ Complete control and customization
+├─ Dedicated virtual server resources
+├─ Enterprise-grade features and support
+└─ Easy to scale as your site grows
+```
 
 ### EC2 Core Concepts
 
