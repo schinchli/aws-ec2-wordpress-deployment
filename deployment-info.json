@@ -1,0 +1,10 @@
+{
+    "instance_id": "i-0beb5032dd5dd3b23",
+    "public_ip": "54.82.22.216",
+    "key_name": "wordpress-key-schinchli-1762688668",
+    "security_group_id": "sg-03154aa798c70db82",
+    "wordpress_url": "http://54.82.22.216",
+    "admin_url": "http://54.82.22.216/wp-admin",
+    "ssh_command": "ssh -i wordpress-key-schinchli-1762688668.pem ec2-user@54.82.22.216",
+    "created_at": "2025-11-09T12:00:39Z"
+}
