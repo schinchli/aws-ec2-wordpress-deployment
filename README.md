@@ -80,31 +80,23 @@ cd "Deploying EC2 with WordPress CMS"
 3. **Learn** - Understand EC2, security groups, and WordPress
 4. **Customize** - Add content, themes, and plugins
 
-## 📚 Step-by-Step Guide
+## 📚 Complete Documentation
 
-### Phase 1: Understanding EC2
-- What is Amazon EC2 and virtual servers
-- Instance types and sizing
-- Amazon Machine Images (AMIs)
-- Key pairs and security
+- **[AWS Architecture Diagram](AWS_ARCHITECTURE.md)** - Visual architecture with all components
+- **[Detailed Costing Analysis](AWS_COSTING.md)** - Free tier, pricing, and TCO breakdown  
+- **[EC2 Configuration Details](EC2_CONFIGURATION.md)** - Complete instance and stack configuration
+- **[Comprehensive Learning Guide](AWS_EC2_LEARNING_GUIDE.md)** - Step-by-step tutorial
 
-### Phase 2: Network Security
-- Security groups as virtual firewalls
-- Inbound and outbound rules
-- Port configuration (80, 443, 22)
-- Best security practices
+## 📊 Architecture Overview
 
-### Phase 3: WordPress Setup
-- LAMP stack components
-- WordPress installation process
-- Database configuration
-- Admin user creation
+![Architecture](https://github.com/schinchli/aws-ec2-wordpress-deployment/blob/main/AWS_ARCHITECTURE.md#-architecture-diagram)
 
-### Phase 4: Going Live
-- Public IP and DNS
-- Domain name setup (optional)
-- SSL certificate installation
-- Performance optimization
+### Key Components
+- **EC2 Instance**: t3.micro with Bitnami WordPress
+- **Security Group**: HTTP (80) and SSH (22) access
+- **EBS Storage**: 20GB gp3 volume
+- **VPC**: Default VPC with public subnet
+- **Cost**: $0/month (Free Tier) → $9.55/month after
 
 ## 🔒 Security Features
 
