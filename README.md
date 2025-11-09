@@ -2,6 +2,10 @@
 
 > **Complete hands-on tutorial for deploying WordPress on AWS EC2 - Learn cloud computing by building a production-ready blog!**
 
+![WordPress Blog](wordpress-blog-screenshot.png)
+
+![WordPress Admin Console](wordpress-admin-screenshot.png)
+
 ## 🎯 What You'll Learn
 
 - **EC2 Instance Management** - Launch, configure, and manage virtual servers
