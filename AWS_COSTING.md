@@ -1,10 +1,10 @@
 # Amazon EC2 WordPress Costs - Simple Breakdown
 
-## 💰 Quick Answer
+## 💰 Infrastructure Costs
 
 - **Year 1**: FREE (AWS Free Tier)
 - **Year 2+**: $9.55/month
-- **Cheaper than**: Netflix subscription
+- **Enterprise-grade hosting at competitive rates**
 
 ## 📊 Detailed Costs
 
@@ -35,7 +35,7 @@ Monthly Costs:
 | Bluehost | $10.95 | Limited resources |
 | DigitalOcean | $12.00 | Similar to EC2 |
 
-**Winner**: AWS EC2 (cheapest + most powerful)
+**Winner**: AWS EC2 (most cost-effective with full control)
 
 ## 📈 Traffic-Based Costs
 

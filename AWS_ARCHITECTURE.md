@@ -20,10 +20,11 @@ Amazon EC2 Instance (t3.micro)
 
 ## 🌐 Network Setup
 
-### Your WordPress URL
-- **Public IP**: 54.196.248.208
-- **Website**: http://54.196.248.208
-- **Admin**: http://54.196.248.208/wp-admin
+### Deployment Configuration
+- **Instance Type**: t3.micro
+- **Region**: us-east-1
+- **Storage**: 20GB SSD
+- **Network**: Public subnet with security groups
 
 ### Security (Firewall Rules)
 ```yaml
@@ -106,18 +107,18 @@ AWS Region: us-east-1 (N. Virginia)
 
 ## 🔧 Management
 
-### Start/Stop Server:
+### Instance Management:
 ```bash
-# Stop (saves money)
-aws ec2 stop-instances --instance-ids i-037b4d777295f2bf3
+# Stop instance (cost optimization)
+aws ec2 stop-instances --instance-ids YOUR_INSTANCE_ID
 
-# Start (resume website)
-aws ec2 start-instances --instance-ids i-037b4d777295f2bf3
+# Start instance (resume service)
+aws ec2 start-instances --instance-ids YOUR_INSTANCE_ID
 ```
 
-### Connect to Server:
+### SSH Access:
 ```bash
-ssh -i your-key.pem bitnami@54.196.248.208
+ssh -i your-key.pem bitnami@YOUR_PUBLIC_IP
 ```
 
 ## 💰 Cost Breakdown

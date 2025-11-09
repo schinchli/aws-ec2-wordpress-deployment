@@ -1,10 +1,10 @@
 # Deploy WordPress on Amazon EC2 - 5 Minute Tutorial
 
-> **Launch WordPress on AWS EC2 in 5 minutes. No experience needed. Free for 12 months.**
+> **Launch WordPress on AWS EC2 in 5 minutes. Production-ready deployment with automated scripts.**
 
 ![WordPress Blog](wordpress-blog-screenshot.png)
 
-## 🚀 Quick Deploy (Copy & Paste)
+## 🚀 Quick Deploy
 
 ```bash
 git clone https://github.com/schinchli/aws-ec2-wordpress-deployment.git
@@ -12,96 +12,93 @@ cd aws-ec2-wordpress-deployment
 ./deploy-simple.sh
 ```
 
-**Done!** Your WordPress blog is live on Amazon EC2.
+Your WordPress blog is deployed on Amazon EC2.
 
-## 💰 Cost: FREE First Year, Then $9/month
+## 💰 Cost: FREE First Year, Then $9.55/month
 
 - **Year 1**: $0 (AWS Free Tier)
 - **Year 2+**: $9.55/month
-- **Cheaper than**: Starbucks coffee
+- **Enterprise features at startup cost**
 
 ## 🎯 What You Get
 
-- ✅ Live WordPress blog on Amazon EC2
-- ✅ Professional web hosting
-- ✅ Learn AWS cloud computing
-- ✅ Scalable to millions of visitors
+- ✅ Production WordPress on Amazon EC2
+- ✅ Scalable cloud infrastructure
+- ✅ AWS cloud computing skills
+- ✅ Enterprise-grade hosting
 
 ## 📚 Learn AWS EC2 Fast
 
-### Option 1: Just Deploy (5 minutes)
-Run the script above. Blog is live. Learn by doing.
+### Option 1: Deploy First (5 minutes)
+Run the deployment script. Learn by building.
 
-### Option 2: Understand Everything (30 minutes)
-- [AWS EC2 Basics](AWS_EC2_LEARNING_GUIDE.md) - What is cloud computing?
-- [Architecture Diagram](AWS_ARCHITECTURE.md) - How it all connects
-- [Cost Breakdown](AWS_COSTING.md) - Exact pricing details
+### Option 2: Understand Architecture (30 minutes)
+- [AWS EC2 Fundamentals](AWS_EC2_LEARNING_GUIDE.md) - Cloud computing concepts
+- [Architecture Overview](AWS_ARCHITECTURE.md) - System design patterns
+- [Cost Analysis](AWS_COSTING.md) - Infrastructure economics
 
-## 🏗️ Simple Architecture
+## 🏗️ Architecture
 
 ```
-Internet → AWS Security → Amazon EC2 → WordPress
-                            ├─ Web Server
-                            ├─ Database
-                            └─ Linux OS
+Internet → AWS Security Groups → Amazon EC2 → WordPress
+                                   ├─ Apache Web Server
+                                   ├─ MySQL Database
+                                   └─ Linux OS
 ```
 
-## 🎓 Perfect For
+## 🎓 Target Audience
 
-- **Students**: Learn cloud computing hands-on
-- **Developers**: Add AWS skills to resume
-- **Business Owners**: Professional website hosting
-- **Beginners**: No technical experience required
+- **Developers**: Add AWS skills to tech stack
+- **DevOps Engineers**: Learn infrastructure automation
+- **Students**: Hands-on cloud computing experience
+- **Technical Teams**: Cost-effective hosting solution
 
 ## 🔧 What's Included
 
-- **One-click deployment** script
-- **WordPress 6.8** latest version
-- **SSL certificate** for HTTPS
-- **Automatic backups** setup guide
-- **Cost monitoring** alerts
+- **Automated deployment** with error handling
+- **WordPress 6.8** latest stable version
+- **SSL/TLS configuration** for HTTPS
+- **Security hardening** best practices
+- **Monitoring setup** and alerting
 
 ## ⚡ Why Amazon EC2?
 
-| Traditional Hosting | Amazon EC2 |
-|-------------------|------------|
-| $20-50/month | $0-9/month |
-| Limited control | Full control |
-| Shared resources | Dedicated server |
-| Basic features | Enterprise features |
-
-## 🚀 Live Demo
-
-**WordPress Site**: http://54.196.248.208
-**Admin Panel**: http://54.196.248.208/wp-admin
+| Traditional VPS | Amazon EC2 |
+|----------------|------------|
+| $20-50/month | $9.55/month |
+| Fixed resources | Elastic scaling |
+| Basic monitoring | CloudWatch integration |
+| Manual backups | EBS snapshots |
 
 ## 📖 Learning Path
 
-1. **Deploy** (5 min) - Get WordPress running
-2. **Explore** (15 min) - Play with WordPress admin
-3. **Learn** (30 min) - Understand AWS concepts
-4. **Optimize** (1 hour) - Security and performance
+1. **Deploy** (5 min) - Infrastructure provisioning
+2. **Configure** (15 min) - WordPress customization
+3. **Optimize** (30 min) - Performance tuning
+4. **Scale** (1 hour) - Production hardening
 
 ## 🛠️ Prerequisites
 
-- AWS account (free)
-- Computer with internet
-- Copy/paste skills
+- AWS account with EC2 permissions
+- AWS CLI configured
+- Basic command line knowledge
 
-## 🔗 Resources
+## 🔗 Technical Resources
 
-- [AWS Free Tier](https://aws.amazon.com/free/)
-- [WordPress Guide](https://wordpress.org/documentation/)
-- [AWS Support](https://repost.aws/)
+- [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2/)
+- [WordPress Developer Resources](https://developer.wordpress.org/)
+- [AWS Architecture Center](https://aws.amazon.com/architecture/)
 
-## 🏆 Success Stories
+## 🏆 Production Features
 
-*"Got my blog running in 3 minutes. Now I understand AWS!"* - Sarah, Student
-
-*"Saved $30/month switching from GoDaddy to AWS EC2."* - Mike, Business Owner
+- **Auto-scaling ready** architecture
+- **Load balancer compatible** setup
+- **Database optimization** for performance
+- **Security groups** properly configured
+- **Monitoring** and logging enabled
 
 ---
 
-**⭐ Star this repo if it helped you learn AWS!**
+**⭐ Star this repository for AWS infrastructure tutorials**
 
-**🔗 Share with friends learning cloud computing!**
+**🔗 Fork for your own deployments**
