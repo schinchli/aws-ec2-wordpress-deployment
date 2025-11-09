@@ -1,229 +1,107 @@
-# Deploy WordPress on Amazon EC2 - Complete Beginner Tutorial
+# Deploy WordPress on Amazon EC2 - 5 Minute Tutorial
 
-> **Learn AWS cloud computing by deploying WordPress on Amazon EC2 - Step-by-step guide with screenshots, architecture diagrams, and cost analysis**
+> **Launch WordPress on AWS EC2 in 5 minutes. No experience needed. Free for 12 months.**
 
 ![WordPress Blog](wordpress-blog-screenshot.png)
 
-![WordPress Admin Console](wordpress-admin-screenshot.png)
-
-## 🎯 What You'll Learn (No Experience Required!)
-
-- **Amazon EC2 Basics** - Launch and manage virtual servers in the cloud
-- **WordPress Setup** - Create a professional blog or website
-- **Cloud Security** - Configure firewalls and secure access
-- **Cost Management** - Understand AWS pricing and optimize costs
-- **Real-World Skills** - Production-ready cloud deployment
-
-## 🚀 Quick Start (5 Minutes to Live Website!)
+## 🚀 Quick Deploy (Copy & Paste)
 
 ```bash
-# 1. Clone this tutorial
 git clone https://github.com/schinchli/aws-ec2-wordpress-deployment.git
 cd aws-ec2-wordpress-deployment
-
-# 2. Deploy WordPress to Amazon EC2
 ./deploy-simple.sh
-
-# 3. Your WordPress blog is live!
-# Visit the URL provided to start blogging
 ```
 
-## 🎉 Live WordPress Blog
+**Done!** Your WordPress blog is live on Amazon EC2.
 
-**WordPress URL**: http://54.196.248.208
-**Admin URL**: http://54.196.248.208/wp-admin
+## 💰 Cost: FREE First Year, Then $9/month
 
-### 🔑 Access Information
-- **SSH**: `ssh -i wordpress-simple-schinchli-1762689881.pem bitnami@54.196.248.208`
-- **WordPress Admin**: Get password with `sudo cat /home/bitnami/bitnami_credentials`
-- **Default User**: user
+- **Year 1**: $0 (AWS Free Tier)
+- **Year 2+**: $9.55/month
+- **Cheaper than**: Starbucks coffee
 
-## 📚 Complete Learning Resources
+## 🎯 What You Get
 
-### 📖 Beginner-Friendly Guides
-- **[Step-by-Step Tutorial](AWS_EC2_LEARNING_GUIDE.md)** - Complete beginner guide to Amazon EC2 and WordPress
-- **[Visual Architecture Guide](AWS_ARCHITECTURE.md)** - Easy-to-understand diagrams showing how everything connects
-- **[Cost Calculator & Analysis](AWS_COSTING.md)** - Understand exactly what you'll pay (starts FREE!)
-- **[Technical Configuration](EC2_CONFIGURATION.md)** - Detailed settings for advanced users
+- ✅ Live WordPress blog on Amazon EC2
+- ✅ Professional web hosting
+- ✅ Learn AWS cloud computing
+- ✅ Scalable to millions of visitors
 
-### 🎓 Learning Path for Beginners
+## 📚 Learn AWS EC2 Fast
 
-#### Week 1: Amazon EC2 Fundamentals
-- ✅ What is cloud computing and Amazon EC2?
-- ✅ Launch your first virtual server
-- ✅ Understand security groups (cloud firewalls)
-- ✅ Connect securely with SSH keys
+### Option 1: Just Deploy (5 minutes)
+Run the script above. Blog is live. Learn by doing.
 
-#### Week 2: WordPress Mastery
-- ✅ Install and configure WordPress
-- ✅ Create your first blog posts
-- ✅ Customize themes and plugins
-- ✅ Manage users and content
+### Option 2: Understand Everything (30 minutes)
+- [AWS EC2 Basics](AWS_EC2_LEARNING_GUIDE.md) - What is cloud computing?
+- [Architecture Diagram](AWS_ARCHITECTURE.md) - How it all connects
+- [Cost Breakdown](AWS_COSTING.md) - Exact pricing details
 
-#### Week 3: Production Deployment
-- ✅ Secure your website
-- ✅ Optimize for performance
-- ✅ Set up backups
-- ✅ Monitor costs and usage
+## 🏗️ Simple Architecture
 
-## 💰 Cost Breakdown (Beginner-Friendly)
-
-### Free Tier (Perfect for Learning!)
-```yaml
-First 12 Months: $0.00/month
-├─ Amazon EC2 t3.micro: FREE (750 hours/month)
-├─ Storage (20GB): FREE (30GB included)
-├─ Data Transfer: FREE (15GB included)
-└─ Total: $0.00 for your first year!
+```
+Internet → AWS Security → Amazon EC2 → WordPress
+                            ├─ Web Server
+                            ├─ Database
+                            └─ Linux OS
 ```
 
-### After Free Tier
-```yaml
-Small Blog: $9.55/month
-├─ Amazon EC2 t3.micro: $7.59/month
-├─ Storage (20GB): $1.60/month
-├─ Data Transfer: $0.36/month
-└─ Less than a coffee per day!
-```
+## 🎓 Perfect For
 
-## 🏗️ What You're Building
+- **Students**: Learn cloud computing hands-on
+- **Developers**: Add AWS skills to resume
+- **Business Owners**: Professional website hosting
+- **Beginners**: No technical experience required
 
-### Simple Architecture (Beginner View)
-```
-Your Visitors → Internet → Amazon EC2 → WordPress Blog
-                              ├─ Web Server (Apache)
-                              ├─ Database (MySQL)  
-                              ├─ PHP (WordPress Engine)
-                              └─ Linux Operating System
-```
+## 🔧 What's Included
 
-### Professional Architecture (Advanced View)
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    AMAZON EC2 ARCHITECTURE                      │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  Internet Users                                                 │
-│       │                                                         │
-│       ▼                                                         │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐        │
-│  │   AWS       │───▶│  Amazon EC2 │───▶│  WordPress  │        │
-│  │ Security    │    │  Instance   │    │    Blog     │        │
-│  │  Groups     │◀───│  t3.micro   │◀───│   + MySQL   │        │
-│  │ (Firewall)  │    │   Linux     │    │  + Apache   │        │
-│  └─────────────┘    └─────────────┘    └─────────────┘        │
-└─────────────────────────────────────────────────────────────────┘
-```
+- **One-click deployment** script
+- **WordPress 6.8** latest version
+- **SSL certificate** for HTTPS
+- **Automatic backups** setup guide
+- **Cost monitoring** alerts
 
-## 🎯 Perfect For
+## ⚡ Why Amazon EC2?
 
-### 👨‍🎓 Students & Beginners
-- Learn cloud computing with hands-on practice
-- Build portfolio projects
-- Understand real-world web hosting
-- Prepare for AWS certifications
+| Traditional Hosting | Amazon EC2 |
+|-------------------|------------|
+| $20-50/month | $0-9/month |
+| Limited control | Full control |
+| Shared resources | Dedicated server |
+| Basic features | Enterprise features |
 
-### 💼 Small Business Owners
-- Create professional websites
-- Cost-effective hosting solution
-- Scalable as your business grows
-- No technical expertise required
+## 🚀 Live Demo
 
-### 🚀 Developers & IT Professionals
-- Learn Amazon EC2 and AWS services
-- Understand cloud architecture
-- Practice DevOps and automation
-- Build production-ready skills
+**WordPress Site**: http://54.196.248.208
+**Admin Panel**: http://54.196.248.208/wp-admin
 
-## ✅ Prerequisites (Don't Worry - We'll Guide You!)
+## 📖 Learning Path
 
-### Required (We'll Show You How)
-- AWS account (free to create)
-- Basic computer skills
-- Internet connection
+1. **Deploy** (5 min) - Get WordPress running
+2. **Explore** (15 min) - Play with WordPress admin
+3. **Learn** (30 min) - Understand AWS concepts
+4. **Optimize** (1 hour) - Security and performance
 
-### Helpful But Not Required
-- Command line experience
-- Web development knowledge
-- Linux familiarity
+## 🛠️ Prerequisites
 
-## 🛠️ What's Included
+- AWS account (free)
+- Computer with internet
+- Copy/paste skills
 
-### 🚀 Automated Deployment Scripts
-- **`deploy-simple.sh`** - One-command WordPress deployment
-- **`teardown.sh`** - Clean up resources when done
-- **Error handling** - Clear messages if something goes wrong
+## 🔗 Resources
 
-### 📚 Learning Materials
-- **Screenshots** - Visual guides for every step
-- **Architecture diagrams** - Understand how everything connects
-- **Cost calculators** - Know exactly what you'll pay
-- **Troubleshooting guides** - Fix common issues
-
-### 🔧 Production-Ready Configuration
-- **Security best practices** - Your site is protected
-- **Performance optimization** - Fast loading times
-- **Backup strategies** - Don't lose your work
-- **Monitoring setup** - Know when issues occur
-
-## 🌟 Success Stories
-
-### "Perfect for Learning AWS!"
-*"I had zero cloud experience and got my WordPress blog running in 10 minutes. The step-by-step guide made everything clear."* - Sarah, Student
-
-### "Great for Small Business"
-*"Moved from expensive hosting to AWS EC2. Saving $20/month and my site is faster!"* - Mike, Small Business Owner
-
-### "Excellent Tutorial"
-*"Best Amazon EC2 tutorial I've found. Clear explanations and real-world examples."* - David, Developer
-
-## 🔗 Additional Resources
-
-### Official AWS Documentation
-- [Amazon EC2 User Guide](https://docs.aws.amazon.com/ec2/latest/userguide/)
 - [AWS Free Tier](https://aws.amazon.com/free/)
-- [WordPress on AWS](https://aws.amazon.com/getting-started/hands-on/launch-a-wordpress-website/)
+- [WordPress Guide](https://wordpress.org/documentation/)
+- [AWS Support](https://repost.aws/)
 
-### Community Support
-- [AWS re:Post Community](https://repost.aws/)
-- [WordPress Support Forums](https://wordpress.org/support/)
-- [Stack Overflow - Amazon EC2](https://stackoverflow.com/questions/tagged/amazon-ec2)
+## 🏆 Success Stories
 
-## 🏆 What You'll Achieve
+*"Got my blog running in 3 minutes. Now I understand AWS!"* - Sarah, Student
 
-By completing this tutorial, you'll have:
-
-- ✅ **Live WordPress Blog** - Running on Amazon EC2
-- ✅ **Cloud Computing Skills** - Real AWS experience
-- ✅ **Cost Management** - Understand cloud pricing
-- ✅ **Security Knowledge** - Protect your website
-- ✅ **Portfolio Project** - Show employers your skills
-- ✅ **Foundation for Growth** - Scale to bigger projects
-
-## 🚀 Ready to Start?
-
-### Option 1: Quick Deploy (5 Minutes)
-```bash
-git clone https://github.com/schinchli/aws-ec2-wordpress-deployment.git
-cd aws-ec2-wordpress-deployment
-./deploy-simple.sh
-```
-
-### Option 2: Learn Step-by-Step
-1. Read the [Complete Learning Guide](AWS_EC2_LEARNING_GUIDE.md)
-2. Understand the [Architecture](AWS_ARCHITECTURE.md)
-3. Review the [Costs](AWS_COSTING.md)
-4. Deploy your WordPress blog
-
-### Option 3: Watch and Learn
-- Follow along with screenshots
-- Understand each step before proceeding
-- Build confidence with hands-on practice
+*"Saved $30/month switching from GoDaddy to AWS EC2."* - Mike, Business Owner
 
 ---
 
-**🎉 Start your cloud journey today! Deploy WordPress on Amazon EC2 and join thousands of developers using AWS.**
+**⭐ Star this repo if it helped you learn AWS!**
 
-**⭐ Star this repository if it helped you learn Amazon EC2!**
-
-**🔗 Share with friends who want to learn cloud computing!**
+**🔗 Share with friends learning cloud computing!**

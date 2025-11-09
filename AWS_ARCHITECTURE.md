@@ -1,252 +1,157 @@
-# AWS EC2 WordPress Architecture
+# Amazon EC2 WordPress Architecture - Simple Guide
 
-## 🏗️ Architecture Diagram
+## 🏗️ Simple Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           AWS EC2 WORDPRESS ARCHITECTURE                        │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│  Internet Users                                                                 │
-│       │                                                                         │
-│       │ HTTP/HTTPS Requests                                                     │
-│       ▼                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────────────┐   │
-│  │                        INTERNET GATEWAY                                 │   │
-│  │                     (AWS Managed Service)                               │   │
-│  └─────────────────────────────────────────────────────────────────────────┘   │
-│       │                                                                         │
-│       ▼                                                                         │
-│  ┌─────────────────────────────────────────────────────────────────────────┐   │
-│  │                         VPC (Default)                                  │   │
-│  │                    CIDR: 172.31.0.0/16                                 │   │
-│  │  ┌─────────────────────────────────────────────────────────────────┐   │   │
-│  │  │                    PUBLIC SUBNET                                │   │   │
-│  │  │                 us-east-1a (Default)                           │   │   │
-│  │  │              CIDR: 172.31.0.0/20                               │   │   │
-│  │  │                                                                 │   │   │
-│  │  │  ┌─────────────────────────────────────────────────────────┐   │   │   │
-│  │  │  │                SECURITY GROUP                           │   │   │   │
-│  │  │  │          wordpress-simple-sg-*                         │   │   │   │
-│  │  │  │                                                         │   │   │   │
-│  │  │  │  Inbound Rules:                                         │   │   │   │
-│  │  │  │  • HTTP (80)    ← 0.0.0.0/0                           │   │   │   │
-│  │  │  │  • SSH (22)     ← 0.0.0.0/0                           │   │   │   │
-│  │  │  │                                                         │   │   │   │
-│  │  │  │  Outbound Rules:                                        │   │   │   │
-│  │  │  │  • All Traffic  → 0.0.0.0/0                           │   │   │   │
-│  │  │  │                                                         │   │   │   │
-│  │  │  │  ┌─────────────────────────────────────────────────┐   │   │   │   │
-│  │  │  │  │              EC2 INSTANCE                       │   │   │   │   │
-│  │  │  │  │         WordPress-Simple                        │   │   │   │   │
-│  │  │  │  │                                                 │   │   │   │   │
-│  │  │  │  │  Instance Details:                              │   │   │   │   │
-│  │  │  │  │  • ID: i-037b4d777295f2bf3                     │   │   │   │   │
-│  │  │  │  │  • Type: t3.micro                              │   │   │   │   │
-│  │  │  │  │  • AMI: ami-03fc0e9b14614fd10                  │   │   │   │   │
-│  │  │  │  │  • Public IP: 54.196.248.208                   │   │   │   │   │
-│  │  │  │  │  • Private IP: 172.31.x.x                      │   │   │   │   │
-│  │  │  │  │  • Key Pair: wordpress-simple-*                │   │   │   │   │
-│  │  │  │  │                                                 │   │   │   │   │
-│  │  │  │  │  ┌─────────────────────────────────────────┐   │   │   │   │   │
-│  │  │  │  │  │           BITNAMI STACK                 │   │   │   │   │   │
-│  │  │  │  │  │                                         │   │   │   │   │   │
-│  │  │  │  │  │  ┌─────────────────────────────────┐   │   │   │   │   │   │
-│  │  │  │  │  │  │        WORDPRESS CMS            │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Version: 6.8.3              │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Port: 80/443                │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Admin: /wp-admin            │   │   │   │   │   │   │
-│  │  │  │  │  │  └─────────────────────────────────┘   │   │   │   │   │   │
-│  │  │  │  │  │                                         │   │   │   │   │   │
-│  │  │  │  │  │  ┌─────────────────────────────────┐   │   │   │   │   │   │
-│  │  │  │  │  │  │        APACHE WEB SERVER        │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Version: 2.4.x              │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Port: 80, 443               │   │   │   │   │   │   │
-│  │  │  │  │  │  │     SSL: Enabled                │   │   │   │   │   │   │
-│  │  │  │  │  │  └─────────────────────────────────┘   │   │   │   │   │   │
-│  │  │  │  │  │                                         │   │   │   │   │   │
-│  │  │  │  │  │  ┌─────────────────────────────────┐   │   │   │   │   │   │
-│  │  │  │  │  │  │           PHP ENGINE            │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Version: 8.x                │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Extensions: MySQL, GD       │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Memory: 128M                │   │   │   │   │   │   │
-│  │  │  │  │  │  └─────────────────────────────────┘   │   │   │   │   │   │
-│  │  │  │  │  │                                         │   │   │   │   │   │
-│  │  │  │  │  │  ┌─────────────────────────────────┐   │   │   │   │   │   │
-│  │  │  │  │  │  │        MYSQL DATABASE           │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Version: 8.0.x              │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Port: 3306 (Internal)       │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Database: bitnami_wordpress │   │   │   │   │   │   │
-│  │  │  │  │  │  └─────────────────────────────────┘   │   │   │   │   │   │
-│  │  │  │  │  │                                         │   │   │   │   │   │
-│  │  │  │  │  │  ┌─────────────────────────────────┐   │   │   │   │   │   │
-│  │  │  │  │  │  │        OPERATING SYSTEM         │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Debian GNU/Linux 12        │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Kernel: 6.1.x               │   │   │   │   │   │   │
-│  │  │  │  │  │  │     Architecture: x86_64        │   │   │   │   │   │   │
-│  │  │  │  │  │  └─────────────────────────────────┘   │   │   │   │   │   │
-│  │  │  │  │  └─────────────────────────────────────────┘   │   │   │   │   │
-│  │  │  │  │                                                 │   │   │   │   │
-│  │  │  │  │  ┌─────────────────────────────────────────┐   │   │   │   │   │
-│  │  │  │  │  │              EBS VOLUME                 │   │   │   │   │   │
-│  │  │  │  │  │         /dev/xvda (Root)               │   │   │   │   │   │
-│  │  │  │  │  │         Size: 20 GB                    │   │   │   │   │   │
-│  │  │  │  │  │         Type: gp3                      │   │   │   │   │   │
-│  │  │  │  │  │         IOPS: 3000                     │   │   │   │   │   │
-│  │  │  │  │  │         Encrypted: No                  │   │   │   │   │   │
-│  │  │  │  │  └─────────────────────────────────────────┘   │   │   │   │   │
-│  │  │  │  └─────────────────────────────────────────────────┘   │   │   │   │
-│  │  │  └─────────────────────────────────────────────────────────┘   │   │   │
-│  │  └─────────────────────────────────────────────────────────────────┘   │   │
-│  └─────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                 │
-│  ┌─────────────────────────────────────────────────────────────────────────┐   │
-│  │                           ROUTE TABLE                                   │   │
-│  │                        (Default Public)                                │   │
-│  │                                                                         │   │
-│  │  Routes:                                                                │   │
-│  │  • 172.31.0.0/16  → Local                                             │   │
-│  │  • 0.0.0.0/0      → Internet Gateway                                  │   │
-│  └─────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
+Internet → AWS Security → Amazon EC2 → WordPress Blog
+             (Firewall)    (Server)     (Website)
 ```
 
-## 🔧 Network Configuration
+## 🔧 What's Inside Amazon EC2
 
-### VPC Details
-- **VPC ID**: vpc-02ba04a37938bda68 (Default VPC)
-- **CIDR Block**: 172.31.0.0/16
-- **Region**: us-east-1 (N. Virginia)
-- **Availability Zones**: us-east-1a, us-east-1b, us-east-1c, us-east-1d, us-east-1e, us-east-1f
+```
+Amazon EC2 Instance (t3.micro)
+├─ WordPress 6.8 (Your blog)
+├─ Apache (Web server)
+├─ MySQL (Database)
+├─ PHP (Programming language)
+└─ Linux (Operating system)
+```
 
-### Subnet Configuration
-- **Subnet Type**: Public (Default)
-- **Availability Zone**: us-east-1a
-- **CIDR Block**: 172.31.0.0/20
-- **Auto-assign Public IP**: Enabled
-- **Route Table**: Default public route table
+## 🌐 Network Setup
 
-### Security Group Rules
+### Your WordPress URL
+- **Public IP**: 54.196.248.208
+- **Website**: http://54.196.248.208
+- **Admin**: http://54.196.248.208/wp-admin
+
+### Security (Firewall Rules)
 ```yaml
-Security Group: wordpress-simple-sg-schinchli-1762689881
-├─ Group ID: sg-0e66587e977c7cc3c
-├─ VPC: vpc-02ba04a37938bda68
-│
-├─ Inbound Rules:
-│  ├─ HTTP (80)
-│  │  ├─ Protocol: TCP
-│  │  ├─ Port: 80
-│  │  ├─ Source: 0.0.0.0/0 (Anywhere IPv4)
-│  │  └─ Description: Web traffic
-│  │
-│  └─ SSH (22)
-│     ├─ Protocol: TCP
-│     ├─ Port: 22
-│     ├─ Source: 0.0.0.0/0 (Anywhere IPv4)
-│     └─ Description: SSH access
-│
-└─ Outbound Rules:
-   └─ All Traffic
-      ├─ Protocol: All
-      ├─ Port: All
-      ├─ Destination: 0.0.0.0/0 (Anywhere IPv4)
-      └─ Description: Default outbound rule
+Allow:
+├─ Port 80 (HTTP) - Website visitors
+├─ Port 22 (SSH) - Admin access
+Block:
+└─ Everything else - Hackers
 ```
 
-## 🌐 DNS and Connectivity
+## 💾 Storage
 
-### Public Access
-- **Public IPv4**: 54.196.248.208
-- **Public DNS**: ec2-54-196-248-208.compute-1.amazonaws.com
-- **Private IPv4**: 172.31.x.x (Dynamic)
-- **Private DNS**: ip-172-31-x-x.ec2.internal
+```yaml
+Hard Drive (20GB):
+├─ Operating System: 3GB
+├─ WordPress: 1GB
+├─ Your content: 16GB available
+└─ Type: SSD (fast)
+```
 
-### Internet Gateway
-- **IGW ID**: igw-xxxxxxxx (Default VPC IGW)
-- **State**: Attached
-- **Routes**: 0.0.0.0/0 → IGW for public internet access
+## 🔄 How It Works
 
-## 🔐 Security Configuration
+### When someone visits your blog:
 
-### Key Pair Authentication
-- **Key Name**: wordpress-simple-schinchli-1762689881
-- **Key Type**: RSA
-- **Key Format**: .pem
-- **Usage**: SSH authentication to EC2 instance
+1. **Browser** → Types your website URL
+2. **Internet** → Routes to AWS
+3. **Security Group** → Checks if allowed (Port 80)
+4. **Apache** → Receives the request
+5. **PHP** → Runs WordPress code
+6. **MySQL** → Gets blog content
+7. **Apache** → Sends webpage back
+8. **Browser** → Shows your blog
 
-### Network ACLs
-- **Default Network ACL**: Applied
-- **Inbound Rules**: Allow all traffic
-- **Outbound Rules**: Allow all traffic
-- **Subnets**: All default subnets associated
+## 📊 Server Specs
 
-## 📊 Monitoring and Logging
+```yaml
+Amazon EC2 t3.micro:
+├─ CPU: 2 cores (burstable)
+├─ RAM: 1GB
+├─ Storage: 20GB SSD
+├─ Network: Up to 5 Gbps
+├─ Cost: $7.59/month (Free first year)
+└─ Perfect for: Small to medium blogs
+```
 
-### CloudWatch Metrics (Available)
-- **CPU Utilization**
-- **Network In/Out**
-- **Disk Read/Write Operations**
-- **Status Check Failed**
+## 🔐 Security Layers
 
-### Instance Metadata
-- **Instance Metadata Service**: v2 (IMDSv2)
-- **HTTP Tokens**: Required
-- **HTTP Endpoint**: Enabled
-- **Instance Tags**: Name=WordPress-Simple
+```
+1. AWS Infrastructure Security (Amazon handles)
+2. Security Groups (You configure)
+3. SSH Keys (You manage)
+4. WordPress Security (Keep updated)
+```
 
-## 🔄 Data Flow
+## 📈 Scaling Options
 
-### Request Flow
-1. **User Request** → Internet → Internet Gateway
-2. **Internet Gateway** → VPC → Public Subnet
-3. **Security Group** → Filters traffic (HTTP/SSH only)
-4. **EC2 Instance** → Apache Web Server (Port 80)
-5. **Apache** → PHP Engine → WordPress Application
-6. **WordPress** → MySQL Database → Data retrieval
-7. **Response** → Apache → Security Group → Internet Gateway → User
+### Traffic Growth Plan:
+```yaml
+Small Blog (1K visitors/month):
+└─ t3.micro ($7.59/month) ✓ Current setup
 
-### Database Connectivity
-- **Internal Communication**: WordPress ↔ MySQL (Port 3306)
-- **No External Access**: MySQL not exposed to internet
-- **Local Socket**: Unix socket for optimal performance
-- **Connection Pooling**: Managed by WordPress/PHP
+Medium Blog (10K visitors/month):
+└─ t3.small ($15.18/month) ← Upgrade when needed
 
-## 🛡️ Security Layers
+Large Blog (100K visitors/month):
+├─ t3.medium ($30.37/month)
+├─ Load Balancer ($16.20/month)
+└─ Multiple servers for high availability
+```
 
-### Network Security
-1. **Internet Gateway**: Controlled entry point
-2. **Security Groups**: Instance-level firewall
-3. **Network ACLs**: Subnet-level firewall (default)
-4. **Private Subnets**: Database isolated from internet
+## 🌍 Global Reach
 
-### Application Security
-1. **SSH Key Authentication**: No password access
-2. **WordPress Security**: Latest version with security patches
-3. **Apache Security**: Configured with security headers
-4. **MySQL Security**: Local access only, no remote connections
+```yaml
+AWS Region: us-east-1 (N. Virginia)
+├─ Low latency for US East Coast
+├─ Can deploy in other regions
+├─ 25+ regions worldwide
+└─ Choose closest to your audience
+```
 
-### Data Security
-1. **EBS Encryption**: Available (not enabled in this demo)
-2. **In-Transit**: HTTPS available via Apache SSL
-3. **At-Rest**: File system permissions and MySQL security
-4. **Backup**: EBS snapshots available
+## 🔧 Management
 
-## 🔧 Scalability Considerations
+### Start/Stop Server:
+```bash
+# Stop (saves money)
+aws ec2 stop-instances --instance-ids i-037b4d777295f2bf3
 
-### Vertical Scaling
-- **Instance Type**: Can upgrade from t3.micro to larger instances
-- **EBS Volume**: Can increase storage size without downtime
-- **Memory/CPU**: Scale up based on traffic requirements
+# Start (resume website)
+aws ec2 start-instances --instance-ids i-037b4d777295f2bf3
+```
 
-### Horizontal Scaling Options
-- **Load Balancer**: Add ALB for multiple instances
-- **Auto Scaling**: Configure ASG for automatic scaling
-- **RDS**: Move database to managed RDS service
-- **CloudFront**: Add CDN for global content delivery
+### Connect to Server:
+```bash
+ssh -i your-key.pem bitnami@54.196.248.208
+```
 
-### High Availability Options
-- **Multi-AZ**: Deploy instances across multiple AZs
-- **ELB Health Checks**: Automatic failover capabilities
-- **RDS Multi-AZ**: Database high availability
-- **Route 53**: DNS failover and health checks
+## 💰 Cost Breakdown
+
+```yaml
+Monthly Costs:
+├─ EC2 t3.micro: $7.59
+├─ Storage 20GB: $1.60
+├─ Data transfer: $0.36
+├─ Total: $9.55/month
+└─ Free Tier: $0 first year
+```
+
+## 🚀 Why This Architecture?
+
+### Pros:
+- ✅ **Simple**: Easy to understand and manage
+- ✅ **Cheap**: Under $10/month
+- ✅ **Scalable**: Upgrade when you grow
+- ✅ **Reliable**: 99.9% uptime
+- ✅ **Secure**: Enterprise-grade security
+
+### Cons:
+- ❌ **Single point of failure**: One server
+- ❌ **Manual scaling**: Need to upgrade manually
+- ❌ **Basic backup**: Need to set up backups
+
+### Perfect For:
+- Personal blogs
+- Small business websites
+- Learning AWS
+- Portfolio projects
+- Development/testing
+
+---
+
+**🎯 This architecture gets you started with AWS. As you grow, you can add load balancers, databases, and CDNs for enterprise-scale applications.**
