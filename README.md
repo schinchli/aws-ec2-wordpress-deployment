@@ -9,7 +9,11 @@
 ```bash
 git clone https://github.com/schinchli/aws-ec2-wordpress-deployment.git
 cd aws-ec2-wordpress-deployment
-./deploy-simple.sh
+
+# Deploy to any AWS region
+./deploy.sh us-east-1    # N. Virginia (default)
+./deploy.sh us-west-2    # Oregon
+./deploy.sh eu-west-1    # Ireland
 ```
 
 Your WordPress blog is deployed on Amazon EC2.
@@ -76,6 +80,15 @@ Internet → AWS Security Groups → Amazon EC2 → WordPress
 2. **Configure** (15 min) - WordPress customization
 3. **Optimize** (30 min) - Performance tuning
 4. **Scale** (1 hour) - Production hardening
+
+## 🧹 Cleanup Resources
+
+```bash
+# Remove all AWS resources when done
+./teardown.sh
+```
+
+Deletes EC2 instance, security group, and SSH key pair.
 
 ## 🛠️ Prerequisites
 

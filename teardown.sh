@@ -1,39 +1,29 @@
 #!/bin/bash
 set -e
 
-DEPLOYMENT_FILE=${1:-"deployment-simple.json"}
-
-if [ ! -f "$DEPLOYMENT_FILE" ]; then
-    echo "❌ Deployment file not found: $DEPLOYMENT_FILE"
+if [ ! -f "deployment.json" ]; then
+    echo "❌ No deployment.json found"
     exit 1
 fi
 
-INSTANCE_ID=$(jq -r '.instance_id' $DEPLOYMENT_FILE)
-SECURITY_GROUP_ID=$(jq -r '.security_group_id' $DEPLOYMENT_FILE)
-KEY_NAME=$(jq -r '.key_name' $DEPLOYMENT_FILE)
+REGION=$(jq -r '.region' deployment.json)
+INSTANCE_ID=$(jq -r '.instance_id' deployment.json)
+SG_ID=$(jq -r '.security_group_id' deployment.json)
+KEY_NAME=$(jq -r '.key_name' deployment.json)
 
-echo "🧹 Cleaning up WordPress deployment"
-echo "Instance: $INSTANCE_ID"
-echo "Security Group: $SECURITY_GROUP_ID"
-echo "Key: $KEY_NAME"
+echo "🧹 Cleaning up deployment in $REGION"
 
 # Terminate instance
-echo "🗑️ Terminating EC2 instance..."
-aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region us-east-1
-
-# Wait for termination
-echo "⏳ Waiting for instance termination..."
-aws ec2 wait instance-terminated --instance-ids $INSTANCE_ID --region us-east-1
+aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region $REGION
+aws ec2 wait instance-terminated --instance-ids $INSTANCE_ID --region $REGION
 
 # Delete security group
-echo "🛡️ Deleting security group..."
-aws ec2 delete-security-group --group-id $SECURITY_GROUP_ID --region us-east-1
+aws ec2 delete-security-group --group-id $SG_ID --region $REGION
 
 # Delete key pair
-echo "🔑 Deleting key pair..."
-aws ec2 delete-key-pair --key-name $KEY_NAME --region us-east-1
+aws ec2 delete-key-pair --key-name $KEY_NAME --region $REGION
 
-# Remove local files
-rm -f ${KEY_NAME}.pem $DEPLOYMENT_FILE
+# Clean up files
+rm -f ${KEY_NAME}.pem deployment.json
 
 echo "✅ Cleanup complete!"

@@ -1,8 +1,0 @@
-{
-    "instance_id": "i-037b4d777295f2bf3",
-    "public_ip": "54.196.248.208",
-    "key_name": "wordpress-simple-schinchli-1762689881",
-    "security_group_id": "sg-0e66587e977c7cc3c",
-    "wordpress_url": "http://54.196.248.208",
-    "ssh_command": "ssh -i wordpress-simple-schinchli-1762689881.pem bitnami@54.196.248.208"
-}

@@ -20,11 +20,11 @@ Amazon EC2 Instance (t3.micro)
 
 ## 🌐 Network Setup
 
-### Deployment Configuration
-- **Instance Type**: t3.micro
-- **Region**: us-east-1
-- **Storage**: 20GB SSD
-- **Network**: Public subnet with security groups
+### Multi-Region Deployment
+- **Supported Regions**: All AWS regions with Bitnami AMI
+- **Default**: us-east-1 (N. Virginia)
+- **Alternative**: us-west-2 (Oregon), eu-west-1 (Ireland)
+- **Selection**: Choose closest to your users
 
 ### Security (Firewall Rules)
 ```yaml

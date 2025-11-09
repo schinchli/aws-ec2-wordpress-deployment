@@ -1,0 +1,8 @@
+# Deployment artifacts
+*.pem
+deployment.json
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log
